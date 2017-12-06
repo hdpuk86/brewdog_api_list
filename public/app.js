@@ -10,6 +10,38 @@ var requestComplete = function(){
   var jsonString = this.responseText;
   var beers = JSON.parse(jsonString);
   generateList(beers);
+  populateDropdown(beers);
+};
+
+var populateDropdown = function(beers){
+  var select = document.querySelector('select');
+  for(beer of beers){
+    var option = document.createElement('option');
+    option.innerText = beer.name;
+    select.appendChild(option);
+  }
+  select.addEventListener('change', function(event){
+    var target = event.target;
+    var index = target.selectedIndex -1;
+    var beer = beers[index];
+    display(beer);
+  })
+};
+
+var removeChildElements = function(nodeId){
+  var node = document.getElementById(nodeId);
+  while (node.firstChild) {
+    node.removeChild(node.firstChild);
+  }
+};
+
+var display = function(beer){
+  var div = document.getElementById('beers');
+  removeChildElements('beers');
+  var ul = document.createElement('ul');
+  addBeerName(ul, beer);
+  addBeerImage(ul, beer);
+  div.appendChild(ul);
 };
 
 var generateList = function(beers){
@@ -35,11 +67,11 @@ var addBeerImage = function(ul, beer){
   img.src = beer.image_url;
   li.appendChild(img);
   ul.appendChild(li);
-}
+};
 
 var app = function(){
   var url = "https://api.punkapi.com/v2/beers";
   makeRequest(url, requestComplete);
-}
+};
 
 window.addEventListener('load', app);
