@@ -11,6 +11,14 @@ input{
   margin: 10px;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .beers{
   padding: 5px;
+}
+
+.beer-image {
+  height: 200px;
 }

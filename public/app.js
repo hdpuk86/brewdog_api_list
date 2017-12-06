@@ -13,9 +13,12 @@ var requestComplete = function(){
 };
 
 var generateList = function(beers){
-  var ul = document.getElementById('beer-list');
   for(beer of beers){
+    var div = document.getElementById('beers');
+    var ul = document.createElement('ul');
     addBeerName(ul, beer);
+    addBeerImage(ul, beer);
+    div.appendChild(ul);
   }
 };
 
@@ -24,6 +27,15 @@ var addBeerName = function(ul, beer){
   li.innerText = beer.name;
   ul.appendChild(li);
 };
+
+var addBeerImage = function(ul, beer){
+  var li = document.createElement('li');
+  var img = document.createElement('img');
+  img.classList = "beer-image";
+  img.src = beer.image_url;
+  li.appendChild(img);
+  ul.appendChild(li);
+}
 
 var app = function(){
   var url = "https://api.punkapi.com/v2/beers";
