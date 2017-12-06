@@ -40,6 +40,7 @@ var display = function(beer){
   removeChildElements('beers');
   var ul = document.createElement('ul');
   addBeerName(ul, beer);
+  addMalts(ul, beer);
   addBeerImage(ul, beer);
   div.appendChild(ul);
 };
