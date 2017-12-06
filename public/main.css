@@ -4,7 +4,7 @@ main{
 
 body {
   background-image: url("https://onisnap.files.wordpress.com/2014/05/reusage-blog-free-texture-paper-light-blue-watercolor-on-napkins.png");
-  font-size: 30px;
+  font-size: 24px;
   font-family: fantasy;
   text-align: center;
 }
@@ -21,7 +21,8 @@ ul {
   list-style-type: none;
   width: 400px;
   text-align: center;
-  padding: 0px 40px;
+  padding: 0px 20px;
+  margin: 0px 40px;
 }
 
 li {
@@ -46,6 +47,10 @@ select {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+#beer-name {
+  font-size: 30px;
 }
 
 .beer-image {

@@ -49,6 +49,7 @@ var generateList = function(beers){
     var div = document.getElementById('beers');
     var ul = document.createElement('ul');
     addBeerName(ul, beer);
+    addMalts(ul, beer);
     addBeerImage(ul, beer);
     div.appendChild(ul);
   }
@@ -56,9 +57,21 @@ var generateList = function(beers){
 
 var addBeerName = function(ul, beer){
   var li = document.createElement('li');
+  li.id = "beer-name";
   li.innerText = beer.name;
   ul.appendChild(li);
 };
+
+var addMalts = function(ul, beer){
+  var li = document.createElement('li');
+  var malts = beer.ingredients.malt;
+  var maltNames = [];
+  for(malt of malts){
+    maltNames.push(malt.name);
+  }
+  li.innerText = "Malts: " + maltNames;
+  ul.appendChild(li);
+}
 
 var addBeerImage = function(ul, beer){
   var li = document.createElement('li');
